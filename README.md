@@ -1,20 +1,27 @@
 # RoboLineage Project Page
 
-This repository hosts the public project page for RoboLineage.
-
-Expected GitHub Pages URL:
+This repository hosts the RoboLineage project page at:
 
 ```text
 https://robolineage.github.io/
 ```
 
-## Deployment
+The page includes the paper summary, system figures, real-robot videos, qualitative VSA/post-review examples, the closed-loop recollection case study, and links to the staged code release.
 
-Create a GitHub organization named `robolineage`, create a public repository
-named `robolineage.github.io`, push this folder to the repository, and enable
-GitHub Pages from the `main` branch if it is not enabled automatically.
+## Layout
 
-## Current Status
+```text
+index.html
+assets/
+  figures/   Paper and appendix figures.
+  videos/    Real-robot deployment videos across ARX, Realman, and GALBOT G1.
+```
 
-The first public page is a minimal coming-soon page. Paper, code, videos, and
-documentation links can be added after the public release materials are ready.
+## Update Checklist
+
+After the public paper and code links are available:
+
+1. Replace the paper placeholder with the arXiv URL.
+2. Confirm the GitHub repository link points to the public RoboLineage release.
+3. Update the BibTeX block with the arXiv identifier.
+4. Check that all videos load with `preload="metadata"` and do not autoplay.
