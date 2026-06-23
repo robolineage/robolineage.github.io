@@ -100,9 +100,9 @@
     }
 
     h1 {
-      max-width: 1040px;
+      max-width: 1120px;
       margin: 0 auto 14px;
-      font-size: clamp(31px, 4.15vw, 48px);
+      font-size: clamp(30px, 3.55vw, 42px);
       font-weight: 760;
       line-height: 1.1;
       letter-spacing: 0;
@@ -238,18 +238,9 @@
     }
 
     .teaser-figure img {
-      max-height: 560px;
+      max-height: 520px;
     }
 
-    .teaser-videos {
-      display: grid;
-      grid-template-columns: repeat(3, minmax(0, 1fr));
-      gap: 14px;
-      width: min(940px, 100%);
-      margin: 16px auto 0;
-    }
-
-    .teaser-card video,
     .video-card video {
       width: 100%;
       aspect-ratio: 16 / 9;
@@ -260,14 +251,12 @@
       box-shadow: 0 6px 18px rgba(20, 30, 38, 0.045);
     }
 
-    .teaser-card h3,
     .video-card h3 {
       margin: 7px 0 0;
       font-size: 15px;
       line-height: 1.25;
     }
 
-    .teaser-card p,
     .video-card p {
       margin: 3px 0 0;
       color: var(--muted);
@@ -338,8 +327,8 @@
     }
 
     .robots-figure {
-      width: min(880px, 100%);
-      margin: 0 auto 26px;
+      width: min(850px, 100%);
+      margin: 16px auto 0;
     }
 
     .video-group {
@@ -409,7 +398,6 @@
 
     @media (max-width: 920px) {
       .takeaways,
-      .teaser-videos,
       .video-grid {
         grid-template-columns: repeat(2, minmax(0, 1fr));
       }
@@ -437,7 +425,6 @@
         font-size: 29px;
       }
 
-      .teaser-videos,
       .takeaways,
       .video-grid {
         grid-template-columns: 1fr;
@@ -512,23 +499,9 @@
       <figure class="figure teaser-figure">
         <img src="assets/figures/fig1.png" alt="Manual policy iteration compared with agent-governed lifecycle artifacts.">
       </figure>
-      <div class="teaser-videos" aria-label="Representative real-robot videos">
-        <article class="teaser-card">
-          <video controls preload="metadata" playsinline src="assets/videos/ARX_red_cube_on_blue.mp4"></video>
-          <h3>ARX: Red Cube on Blue</h3>
-          <p>Visual stacking-style placement.</p>
-        </article>
-        <article class="teaser-card">
-          <video controls preload="metadata" playsinline src="assets/videos/Realman_drawer_open_close.mp4"></video>
-          <h3>Realman: Drawer</h3>
-          <p>Contact-rich articulation.</p>
-        </article>
-        <article class="teaser-card">
-          <video controls preload="metadata" playsinline src="assets/videos/GALBOT_wide_workspace_apple.mp4"></video>
-          <h3>GALBOT G1: Wide Workspace</h3>
-          <p>Far-to-near object transfer.</p>
-        </article>
-      </div>
+      <figure class="figure robots-figure">
+        <img src="assets/figures/robots_fig.png" alt="The three robot platforms used by RoboLineage: ARX, Realman, and GALBOT G1.">
+      </figure>
     </section>
 
     <section id="abstract" class="section-wrap text-section">
@@ -582,13 +555,10 @@
       <div class="section-heading">
         <h2>Real-Robot Task Coverage</h2>
         <p>
-          Deployment clips span the policy-quality categories in the paper and additional
-          transfer, precision-placement, multi-object, and contact-rich tasks.
+          Selected deployment clips span visual placement, transfer, tool use,
+          sorting, wide-workspace manipulation, and contact-rich articulation.
         </p>
       </div>
-      <figure class="figure robots-figure">
-        <img src="assets/figures/robots_fig.png" alt="The three robot platforms used by RoboLineage: ARX, Realman, and GALBOT G1.">
-      </figure>
 
       <div class="video-group">
         <h3>ARX <span>ACT-style action chunking</span></h3>
@@ -599,29 +569,9 @@
             <p>Block placement.</p>
           </article>
           <article class="video-card">
-            <video controls preload="metadata" playsinline src="assets/videos/ARX_lion_to_basket.mp4"></video>
-            <h3>Lion to Basket</h3>
-            <p>Pick-and-place.</p>
-          </article>
-          <article class="video-card">
-            <video controls preload="metadata" playsinline src="assets/videos/ARX_cup_in_cup.mp4"></video>
-            <h3>Cup in Cup</h3>
-            <p>Container insertion.</p>
-          </article>
-          <article class="video-card">
-            <video controls preload="metadata" playsinline src="assets/videos/ARX_right_bottle.mp4"></video>
-            <h3>Right Bottle</h3>
-            <p>Object reorientation.</p>
-          </article>
-          <article class="video-card">
             <video controls preload="metadata" playsinline src="assets/videos/ARX_pour_cherries.mp4"></video>
             <h3>Pour Cherries</h3>
             <p>Container transfer.</p>
-          </article>
-          <article class="video-card">
-            <video controls preload="metadata" playsinline src="assets/videos/ARX_scissors_compartment.mp4"></video>
-            <h3>Scissors Compartment</h3>
-            <p>Precision placement.</p>
           </article>
         </div>
       </div>
@@ -633,16 +583,6 @@
             <video controls preload="metadata" playsinline src="assets/videos/Realman_drawer_open_close.mp4"></video>
             <h3>Drawer Open and Close</h3>
             <p>Contact-rich articulation.</p>
-          </article>
-          <article class="video-card">
-            <video controls preload="metadata" playsinline src="assets/videos/Realman_mango_watermelon_swap.mp4"></video>
-            <h3>Mango Watermelon Swap</h3>
-            <p>Multi-object manipulation.</p>
-          </article>
-          <article class="video-card">
-            <video controls preload="metadata" playsinline src="assets/videos/Realman_tissue_to_table.mp4"></video>
-            <h3>Tissue to Table</h3>
-            <p>Deformable object handling.</p>
           </article>
           <article class="video-card">
             <video controls preload="metadata" playsinline src="assets/videos/Realman_spoon_stir.mp4"></video>
@@ -673,8 +613,8 @@
       <div class="section-heading">
         <h2>Visual Evidence and Review Artifacts</h2>
         <p>
-          Sparse online snapshots and post-rollout packets make failure evidence
-          inspectable before it becomes a dataset decision or recollection hint.
+          Online snapshots and post-rollout packets turn visual moments into
+          reviewable lifecycle artifacts.
         </p>
       </div>
       <figure class="figure compact-figure">
