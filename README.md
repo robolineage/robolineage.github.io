@@ -19,9 +19,8 @@ assets/
 
 ## Update Checklist
 
-After the public paper and code links are available:
+After the public code repository is available:
 
-1. Replace the paper placeholder with the arXiv URL.
-2. Confirm the GitHub repository link points to the public RoboLineage release.
-3. Update the BibTeX block with the arXiv identifier.
-4. Check that all videos load with `preload="metadata"` and do not autoplay.
+1. Confirm the GitHub repository link points to the public RoboLineage release.
+2. Check that all videos load with `preload="metadata"` and do not autoplay.
+3. Update the release section when v0.5 and v1.0 become available.

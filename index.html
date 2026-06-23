@@ -4,21 +4,18 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>RoboLineage</title>
-  <meta name="description" content="RoboLineage: agent-native data lifecycle governance across robot policy iterations.">
+  <meta name="description" content="RoboLineage: Agent-Native Data Lifecycle Governance Across Robot Policy Iterations.">
   <style>
     :root {
       color-scheme: light;
-      --ink: #121623;
-      --muted: #5f6877;
-      --soft: #f5f7fb;
-      --panel: #ffffff;
-      --line: #dce2ec;
-      --blue: #195ee6;
-      --blue-ink: #103f9c;
-      --green: #13845d;
-      --amber: #a45d00;
-      --shadow: 0 18px 48px rgba(18, 22, 35, 0.10);
-      --max: 1180px;
+      --ink: #15171d;
+      --muted: #5d6573;
+      --light: #f6f7fa;
+      --line: #dfe3ea;
+      --blue: #1b58d6;
+      --blue-soft: #eef4ff;
+      --green: #14795a;
+      --max: 1060px;
     }
 
     * {
@@ -31,9 +28,9 @@
 
     body {
       margin: 0;
-      font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Inter, Helvetica, Arial, sans-serif;
       color: var(--ink);
-      background: #fbfcff;
+      background: #fff;
       line-height: 1.55;
     }
 
@@ -48,301 +45,245 @@
 
     img,
     video {
-      max-width: 100%;
       display: block;
+      max-width: 100%;
     }
 
-    .wrap {
-      width: min(var(--max), calc(100% - 40px));
+    .container {
+      width: min(var(--max), calc(100% - 34px));
       margin: 0 auto;
     }
 
-    header {
+    .narrow {
+      width: min(860px, calc(100% - 34px));
+      margin: 0 auto;
+    }
+
+    .topbar {
       border-bottom: 1px solid var(--line);
-      background: rgba(255, 255, 255, 0.92);
-      position: sticky;
-      top: 0;
-      z-index: 10;
-      backdrop-filter: blur(12px);
+      background: rgba(255, 255, 255, 0.96);
     }
 
-    nav {
-      min-height: 64px;
+    .topbar .container {
       display: flex;
       align-items: center;
-      justify-content: space-between;
-      gap: 20px;
+      justify-content: center;
+      gap: 22px;
+      min-height: 48px;
       font-size: 14px;
-      font-weight: 700;
-    }
-
-    .brand {
-      color: var(--ink);
-      font-size: 18px;
-      letter-spacing: 0;
-    }
-
-    .nav-links {
-      display: flex;
-      align-items: center;
-      gap: 18px;
+      font-weight: 650;
       flex-wrap: wrap;
     }
 
     .hero {
-      padding: 64px 0 36px;
-      background:
-        linear-gradient(180deg, #eef4ff 0%, rgba(238, 244, 255, 0) 68%),
-        #fbfcff;
-    }
-
-    .hero-grid {
-      display: grid;
-      grid-template-columns: minmax(0, 0.9fr) minmax(420px, 1.1fr);
-      gap: 34px;
-      align-items: center;
-    }
-
-    .eyebrow {
-      display: inline-flex;
-      gap: 8px;
-      align-items: center;
-      color: var(--blue-ink);
-      background: #eaf1ff;
-      border: 1px solid #cbdcff;
-      font-size: 13px;
-      font-weight: 800;
-      padding: 7px 10px;
-      border-radius: 999px;
-      margin-bottom: 18px;
+      padding: 54px 0 22px;
+      text-align: center;
     }
 
     h1 {
-      margin: 0;
-      font-size: clamp(42px, 7vw, 76px);
-      line-height: 0.98;
+      margin: 0 auto;
+      max-width: 980px;
+      font-size: clamp(34px, 5.2vw, 58px);
+      line-height: 1.05;
       letter-spacing: 0;
+      font-weight: 800;
     }
 
     .subtitle {
-      margin: 22px 0 0;
-      font-size: clamp(18px, 2vw, 22px);
-      color: #3f4858;
-      max-width: 710px;
+      margin: 18px auto 0;
+      max-width: 760px;
+      color: var(--muted);
+      font-size: clamp(17px, 2vw, 21px);
     }
 
     .authors {
-      margin-top: 18px;
-      color: var(--muted);
-      font-size: 15px;
+      margin: 20px auto 0;
+      max-width: 850px;
+      font-size: 16px;
+      line-height: 1.8;
     }
 
     .authors a {
-      color: #303746;
-      font-weight: 750;
+      color: var(--ink);
+      font-weight: 650;
+    }
+
+    .affiliations {
+      margin-top: 8px;
+      color: var(--muted);
+      font-size: 14px;
     }
 
     .logo-strip {
+      margin: 22px auto 0;
       display: flex;
-      align-items: center;
-      flex-wrap: wrap;
-      gap: 12px;
-      margin-top: 18px;
-    }
-
-    .logo-card {
-      display: inline-flex;
-      align-items: center;
       justify-content: center;
-      min-width: 150px;
-      height: 56px;
-      border: 1px solid var(--line);
-      background: #fff;
-      border-radius: 8px;
-      padding: 9px 13px;
-      box-shadow: 0 8px 22px rgba(18, 22, 35, 0.05);
+      align-items: center;
+      gap: 26px;
+      flex-wrap: wrap;
     }
 
-    .logo-card img {
+    .logo-strip img {
       width: auto;
-      max-width: 190px;
-      max-height: 38px;
+      max-height: 34px;
       object-fit: contain;
     }
 
-    .logo-card.transcengram img {
-      max-width: 178px;
+    .logo-strip .transcengram {
+      max-height: 31px;
     }
 
-    .actions {
-      margin-top: 28px;
+    .logo-strip .hku {
+      max-height: 35px;
+    }
+
+    .logo-strip .bit {
+      max-height: 32px;
+    }
+
+    .links {
+      margin: 28px auto 0;
       display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
       flex-wrap: wrap;
-      gap: 12px;
     }
 
     .button {
       display: inline-flex;
       align-items: center;
       justify-content: center;
-      min-height: 42px;
-      padding: 0 16px;
-      border-radius: 6px;
-      border: 1px solid var(--blue);
-      background: var(--blue);
-      color: #fff;
-      font-weight: 800;
-    }
-
-    .button.secondary {
+      min-height: 38px;
+      padding: 0 14px;
+      border: 1px solid var(--line);
+      border-radius: 999px;
       background: #fff;
       color: var(--ink);
-      border-color: var(--line);
+      font-size: 14px;
+      font-weight: 750;
+    }
+
+    .button.primary {
+      color: #fff;
+      border-color: var(--blue);
+      background: var(--blue);
     }
 
     .button:hover {
       text-decoration: none;
-      filter: brightness(0.97);
-    }
-
-    .hero-figure {
-      border: 1px solid var(--line);
-      background: #fff;
-      box-shadow: var(--shadow);
-      padding: 10px;
-      border-radius: 8px;
+      border-color: var(--blue);
     }
 
     section {
-      padding: 56px 0;
+      padding: 48px 0;
     }
 
-    section.alt {
-      background: var(--soft);
+    section.shaded {
+      background: var(--light);
       border-top: 1px solid var(--line);
       border-bottom: 1px solid var(--line);
     }
 
-    .section-head {
-      margin-bottom: 24px;
-      max-width: 850px;
-    }
-
-    .section-label {
-      margin: 0 0 8px;
-      color: var(--blue-ink);
-      font-size: 13px;
-      font-weight: 850;
-      text-transform: uppercase;
-      letter-spacing: 0.08em;
-    }
-
-    h2 {
-      margin: 0;
-      font-size: clamp(28px, 4vw, 42px);
-      line-height: 1.1;
-      letter-spacing: 0;
-    }
-
-    .lead {
-      color: var(--muted);
-      font-size: 18px;
-      margin: 12px 0 0;
-    }
-
-    .figure-panel {
+    .figure {
+      margin: 0 auto;
       border: 1px solid var(--line);
       background: #fff;
-      border-radius: 8px;
-      padding: 12px;
-      box-shadow: 0 10px 28px rgba(18, 22, 35, 0.06);
+      border-radius: 6px;
+      padding: 10px;
+    }
+
+    .figure img {
+      border-radius: 3px;
+      margin: 0 auto;
     }
 
     .caption {
-      margin: 10px 4px 2px;
+      margin: 10px 4px 0;
       color: var(--muted);
       font-size: 14px;
+      text-align: center;
     }
 
-    .two-col {
-      display: grid;
-      grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
-      gap: 22px;
-      align-items: start;
+    .section-title {
+      margin-bottom: 22px;
+      text-align: center;
     }
 
-    .stats {
-      display: grid;
-      grid-template-columns: repeat(4, minmax(0, 1fr));
-      gap: 12px;
-      margin-top: 28px;
+    .section-title h2 {
+      margin: 0;
+      font-size: clamp(25px, 3.5vw, 36px);
+      line-height: 1.16;
+      letter-spacing: 0;
     }
 
-    .stat {
-      border: 1px solid var(--line);
-      background: #fff;
-      border-radius: 8px;
-      padding: 16px;
-    }
-
-    .stat strong {
-      display: block;
-      font-size: 25px;
-      line-height: 1.05;
-      color: var(--blue-ink);
-      margin-bottom: 6px;
-    }
-
-    .stat span {
+    .section-title p {
+      margin: 12px auto 0;
+      max-width: 780px;
       color: var(--muted);
-      font-size: 14px;
+      font-size: 17px;
     }
 
-    .robot-grid {
+    .abstract p {
+      margin: 0;
+      font-size: 17px;
+      color: #313846;
+    }
+
+    .takeaways {
       display: grid;
-      grid-template-columns: 1fr;
-      gap: 24px;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 16px;
+      margin-top: 24px;
     }
 
-    .robot-block {
+    .takeaway {
       border: 1px solid var(--line);
+      border-radius: 6px;
       background: #fff;
-      border-radius: 8px;
       padding: 18px;
     }
 
-    .robot-title {
+    .takeaway h3 {
+      margin: 0 0 8px;
+      font-size: 18px;
+    }
+
+    .takeaway p {
+      margin: 0;
+      color: var(--muted);
+      font-size: 15px;
+    }
+
+    .video-group {
+      margin-top: 28px;
+    }
+
+    .video-group h3 {
+      margin: 0 0 12px;
+      font-size: 22px;
       display: flex;
       align-items: baseline;
       justify-content: space-between;
       gap: 12px;
-      margin-bottom: 14px;
       border-bottom: 1px solid var(--line);
-      padding-bottom: 12px;
+      padding-bottom: 8px;
     }
 
-    .robot-title h3 {
-      margin: 0;
-      font-size: 22px;
-    }
-
-    .robot-title span {
+    .video-group h3 span {
       color: var(--muted);
-      font-weight: 700;
       font-size: 14px;
+      font-weight: 600;
     }
 
     .video-grid {
       display: grid;
       grid-template-columns: repeat(3, minmax(0, 1fr));
-      gap: 14px;
+      gap: 16px;
     }
 
     .video-card {
-      border: 1px solid var(--line);
       background: #fff;
-      border-radius: 8px;
-      overflow: hidden;
     }
 
     .video-card video {
@@ -350,407 +291,448 @@
       aspect-ratio: 16 / 9;
       object-fit: cover;
       background: #111;
+      border: 1px solid var(--line);
+      border-radius: 6px;
     }
 
-    .video-meta {
-      padding: 11px 12px 13px;
-    }
-
-    .video-meta h4 {
-      margin: 0;
+    .video-card h4 {
+      margin: 8px 0 0;
       font-size: 15px;
       line-height: 1.25;
     }
 
-    .video-meta p {
-      margin: 5px 0 0;
+    .video-card p {
+      margin: 3px 0 0;
       color: var(--muted);
       font-size: 13px;
       line-height: 1.35;
     }
 
-    .tag {
-      display: inline-flex;
-      margin-top: 8px;
-      color: var(--green);
-      border: 1px solid rgba(19, 132, 93, 0.22);
-      background: rgba(19, 132, 93, 0.07);
-      font-size: 12px;
-      font-weight: 800;
-      border-radius: 999px;
-      padding: 3px 8px;
-    }
-
     .qual-grid {
       display: grid;
       grid-template-columns: repeat(2, minmax(0, 1fr));
-      gap: 16px;
+      gap: 18px;
     }
 
-    .roadmap {
+    .qual-grid .figure {
+      padding: 8px;
+    }
+
+    .results-row {
+      display: grid;
+      grid-template-columns: repeat(4, minmax(0, 1fr));
+      gap: 12px;
+      margin-top: 22px;
+    }
+
+    .metric {
+      border: 1px solid var(--line);
+      border-radius: 6px;
+      padding: 16px;
+      background: #fff;
+      text-align: center;
+    }
+
+    .metric strong {
+      display: block;
+      color: var(--blue);
+      font-size: 27px;
+      line-height: 1.05;
+      margin-bottom: 4px;
+    }
+
+    .metric span {
+      color: var(--muted);
+      font-size: 13px;
+    }
+
+    .release {
       display: grid;
       grid-template-columns: repeat(3, minmax(0, 1fr));
-      gap: 16px;
+      gap: 14px;
     }
 
-    .roadmap-card {
+    .release-card {
       border: 1px solid var(--line);
+      border-radius: 6px;
       background: #fff;
-      border-radius: 8px;
       padding: 18px;
     }
 
-    .roadmap-card h3 {
+    .release-card h3 {
       margin: 0 0 8px;
-      font-size: 22px;
+      color: var(--blue);
+      font-size: 20px;
     }
 
-    .roadmap-card p {
+    .release-card p {
       margin: 0;
       color: var(--muted);
+      font-size: 15px;
     }
 
-    .bibtex {
-      margin-top: 20px;
-      background: #121623;
-      color: #edf2ff;
-      border-radius: 8px;
+    pre {
+      margin: 18px 0 0;
       padding: 16px;
       overflow-x: auto;
+      border-radius: 6px;
+      background: #10131b;
+      color: #eef3ff;
       font-size: 13px;
       line-height: 1.45;
     }
 
     footer {
-      padding: 36px 0;
+      padding: 32px 0;
+      border-top: 1px solid var(--line);
       color: var(--muted);
       font-size: 14px;
-      border-top: 1px solid var(--line);
+      text-align: center;
     }
 
-    @media (max-width: 960px) {
-      .hero-grid,
-      .two-col,
-      .roadmap {
+    @media (max-width: 860px) {
+      .takeaways,
+      .results-row,
+      .release {
         grid-template-columns: 1fr;
-      }
-
-      .video-grid {
-        grid-template-columns: repeat(2, minmax(0, 1fr));
-      }
-
-      .stats {
-        grid-template-columns: repeat(2, minmax(0, 1fr));
-      }
-    }
-
-    @media (max-width: 640px) {
-      .wrap {
-        width: min(100% - 24px, var(--max));
-      }
-
-      nav {
-        align-items: flex-start;
-        flex-direction: column;
-        padding: 13px 0;
-      }
-
-      .nav-links {
-        gap: 10px 14px;
-      }
-
-      .hero {
-        padding-top: 38px;
       }
 
       .video-grid,
-      .qual-grid,
-      .stats {
+      .qual-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+      }
+    }
+
+    @media (max-width: 620px) {
+      .topbar .container {
+        gap: 14px;
+      }
+
+      .video-grid,
+      .qual-grid {
         grid-template-columns: 1fr;
+      }
+
+      .video-group h3 {
+        align-items: flex-start;
+        flex-direction: column;
+      }
+
+      section {
+        padding: 38px 0;
       }
     }
   </style>
 </head>
+
 <body id="top">
-  <header>
-    <nav class="wrap" aria-label="Main navigation">
-      <a class="brand" href="#top">RoboLineage</a>
-      <div class="nav-links">
-        <a href="#overview">Overview</a>
-        <a href="#pipeline">Pipeline</a>
-        <a href="#videos">Videos</a>
-        <a href="#results">Results</a>
-        <a href="#code">Code</a>
-      </div>
+  <header class="topbar">
+    <nav class="container" aria-label="Main navigation">
+      <a href="#overview">Overview</a>
+      <a href="#pipeline">Pipeline</a>
+      <a href="#videos">Videos</a>
+      <a href="#evidence">Evidence</a>
+      <a href="#paper">Paper</a>
+      <a href="#release">Code</a>
     </nav>
   </header>
 
   <main>
     <section class="hero">
-      <div class="wrap hero-grid">
-        <div>
-          <div class="eyebrow">Robot data lifecycle governance</div>
-          <h1>RoboLineage</h1>
-          <p class="subtitle">
-            Agent-native data lifecycle governance across robot policy iterations.
-            RoboLineage turns rollouts, reviews, datasets, training runs,
-            evaluations, and next-collection decisions into linked lifecycle artifacts.
-          </p>
-          <p class="authors">
-            <a href="https://qianqianlo.github.io/" target="_blank" rel="noopener">Qian Luo</a>,
-            <a href="https://yinsumirage.github.io/Wentao-Guo/" target="_blank" rel="noopener">Wentao Guo</a>,
-            <a href="https://kirarasmile.github.io/biopage/" target="_blank" rel="noopener">Zhennan Qin</a>,
-            <a href="https://openreview.net/profile?id=~Nanchun_Guo1" target="_blank" rel="noopener">Nanchun Guo</a>,
-            <a href="https://github.com/Sodiumsss" target="_blank" rel="noopener">Yunhan Zhao</a>,
-            <a href="https://people.eecs.berkeley.edu/~yima/" target="_blank" rel="noopener">Yi Ma</a>,
-            <a href="https://yanchaoyang.github.io/" target="_blank" rel="noopener">Yanchao Yang</a>
-          </p>
-          <div class="logo-strip" aria-label="Affiliations">
-            <span class="logo-card transcengram"><img src="assets/logos/transcengram_logo.png" alt="Transcengram"></span>
-            <a class="logo-card" href="https://www.hku.hk/" target="_blank" rel="noopener"><img src="assets/logos/hku_logo.jpg" alt="The University of Hong Kong"></a>
-            <a class="logo-card" href="https://english.bit.edu.cn/" target="_blank" rel="noopener"><img src="assets/logos/bit_logo.png" alt="Beijing Institute of Technology"></a>
-          </div>
-          <div class="actions">
-            <a class="button" href="#paper">Paper</a>
-            <a class="button secondary" href="https://github.com/robolineage/robolineage">Code</a>
-            <a class="button secondary" href="#videos">Videos</a>
-          </div>
+      <div class="container">
+        <h1>RoboLineage: Agent-Native Data Lifecycle Governance Across Robot Policy Iterations</h1>
+        <p class="subtitle">
+          Making policy iteration legible across data, training, evaluation, and recollection.
+        </p>
+
+        <p class="authors">
+          <a href="https://qianqianlo.github.io/" target="_blank" rel="noopener">Qian Luo</a><sup>1,2</sup>,
+          <a href="https://yinsumirage.github.io/Wentao-Guo/" target="_blank" rel="noopener">Wentao Guo</a><sup>1,3</sup>,
+          <a href="https://kirarasmile.github.io/biopage/" target="_blank" rel="noopener">Zhennan Qin</a><sup>1</sup>,
+          <a href="https://openreview.net/profile?id=~Nanchun_Guo1" target="_blank" rel="noopener">Nanchun Guo</a><sup>1</sup>,
+          <a href="https://github.com/Sodiumsss" target="_blank" rel="noopener">Yunhan Zhao</a><sup>1</sup>,
+          <a href="https://people.eecs.berkeley.edu/~yima/" target="_blank" rel="noopener">Yi Ma</a><sup>1,2</sup>,
+          <a href="https://yanchaoyang.github.io/" target="_blank" rel="noopener">Yanchao Yang</a><sup>1,2</sup>
+        </p>
+        <p class="affiliations">
+          <sup>1</sup>Transcengram &nbsp;&nbsp;
+          <sup>2</sup>The University of Hong Kong &nbsp;&nbsp;
+          <sup>3</sup>Beijing Institute of Technology
+        </p>
+
+        <div class="logo-strip" aria-label="Affiliations">
+          <img class="transcengram" src="assets/logos/transcengram_logo.png" alt="Transcengram">
+          <a href="https://www.hku.hk/" target="_blank" rel="noopener"><img class="hku" src="assets/logos/hku_logo.jpg" alt="The University of Hong Kong"></a>
+          <a href="https://english.bit.edu.cn/" target="_blank" rel="noopener"><img class="bit" src="assets/logos/bit_logo.png" alt="Beijing Institute of Technology"></a>
         </div>
-        <div class="hero-figure">
+
+        <div class="links">
+          <a class="button primary" href="https://arxiv.org/abs/2606.22142" target="_blank" rel="noopener">arXiv</a>
+          <a class="button" href="https://arxiv.org/pdf/2606.22142" target="_blank" rel="noopener">PDF</a>
+          <a class="button" href="https://github.com/robolineage/robolineage" target="_blank" rel="noopener">Code</a>
+          <a class="button" href="#videos">Videos</a>
+          <a class="button" href="#citation">BibTeX</a>
+        </div>
+      </div>
+    </section>
+
+    <section class="teaser">
+      <div class="container">
+        <div class="figure">
           <img src="assets/figures/fig1.png" alt="Manual policy iteration compared with agent-governed lifecycle artifacts.">
         </div>
       </div>
     </section>
 
-    <section id="overview">
-      <div class="wrap">
-        <div class="section-head">
-          <p class="section-label">System Overview</p>
-          <h2>Making policy iteration legible across data, training, evaluation, and recollection.</h2>
-          <p class="lead">
-            RoboLineage treats robot policy iteration as a lifecycle of typed artifacts.
-            Agents interpret embodied evidence and prepare structured outputs; schemas,
-            validators, and operator decisions keep lifecycle state inspectable across iterations.
-          </p>
+    <section id="overview" class="shaded">
+      <div class="narrow abstract">
+        <div class="section-title">
+          <h2>Abstract</h2>
         </div>
-        <div class="figure-panel">
-          <img src="assets/figures/fig2.png" alt="RoboLineage lifecycle overview across robot onboarding, rollout review, training, evaluation, deployment, and next collection.">
-          <p class="caption">
-            RoboLineage follows the full robot policy iteration loop, from robot onboarding and semantic capture to dataset admission, training integration, evaluation, and next-collection planning.
-          </p>
-        </div>
-        <div class="stats">
-          <div class="stat"><strong>3</strong><span>robot embodiments and policy-family workflows</span></div>
-          <div class="stat"><strong>25</strong><span>review tasks across tabletop manipulation settings</span></div>
-          <div class="stat"><strong>500</strong><span>real-robot rollouts in the review benchmark</span></div>
-          <div class="stat"><strong>12</strong><span>real-robot deployment videos on this page</span></div>
+        <p>
+          Modern robot policies improve through repeated data collection, review,
+          retraining, evaluation, and release decisions, but the evidence connecting
+          these steps is often scattered across local tools, scripts, and expert memory.
+          RoboLineage makes this lifecycle explicit by representing rollouts, reviews,
+          dataset decisions, training runs, policy metadata, evaluations, deployment
+          recommendations, and next-collection plans as typed lineage artifacts.
+          Agents interpret embodied rollout evidence, adapt accepted data to existing
+          training stacks, maintain data health, and summarize cross-iteration state
+          under explicit artifact boundaries. In real-robot manipulation workflows,
+          RoboLineage makes routine policy iteration faster and more auditable while
+          maintaining downstream policy performance.
+        </p>
+
+        <div class="takeaways">
+          <div class="takeaway">
+            <h3>Lifecycle artifacts</h3>
+            <p>Rollout evidence, dataset decisions, training records, evaluations, and recollection plans are linked across iterations.</p>
+          </div>
+          <div class="takeaway">
+            <h3>Agent-native governance</h3>
+            <p>Agents write structured evidence and summaries while validated artifacts carry lifecycle state.</p>
+          </div>
+          <div class="takeaway">
+            <h3>Robot policy iteration</h3>
+            <p>The same interface spans ARX, Realman, and GALBOT G1 workflows with existing policy learners.</p>
+          </div>
         </div>
       </div>
     </section>
 
-    <section id="pipeline" class="alt">
-      <div class="wrap">
-        <div class="section-head">
-          <p class="section-label">Review Pipeline</p>
-          <h2>Raw capture, online semantic anchors, and asynchronous post-rollout review run as separate lanes.</h2>
-          <p class="lead">
-            Raw robot recording remains the source of truth. The online Visual Snapshot Agent
-            writes sparse task-aware anchors during collection, while post-rollout review
-            aggregates evidence packets after raw capture closes.
+    <section>
+      <div class="container">
+        <div class="section-title">
+          <h2>Lifecycle Overview</h2>
+          <p>
+            RoboLineage follows the loop from robot onboarding and semantic capture
+            to review, dataset admission, training integration, evaluation, and next collection.
           </p>
         </div>
-        <div class="figure-panel">
-          <img src="assets/figures/fig3.png" alt="Three-lane design for raw rollout capture, online VSA, and asynchronous post-rollout review.">
-          <p class="caption">
-            The three-lane design preserves raw recording, gives operators timely feedback, and leaves stricter dataset admission to asynchronous review.
+        <div class="figure">
+          <img src="assets/figures/fig2.png" alt="RoboLineage lifecycle overview across robot onboarding, rollout review, training, evaluation, deployment, and next collection.">
+        </div>
+        <div class="results-row">
+          <div class="metric"><strong>3</strong><span>robot embodiments and policy-family workflows</span></div>
+          <div class="metric"><strong>25</strong><span>review tasks</span></div>
+          <div class="metric"><strong>500</strong><span>real-robot rollouts</span></div>
+          <div class="metric"><strong>12</strong><span>deployment videos</span></div>
+        </div>
+      </div>
+    </section>
+
+    <section id="pipeline" class="shaded">
+      <div class="container">
+        <div class="section-title">
+          <h2>Rollout Interpretation Without Blocking Raw Capture</h2>
+          <p>
+            Raw recording remains the source of truth. Online visual snapshots provide
+            sparse semantic anchors during collection; asynchronous review later turns
+            evidence packets into governed dataset decisions.
           </p>
+        </div>
+        <div class="figure">
+          <img src="assets/figures/fig3.png" alt="Three-lane design for raw rollout capture, online VSA, and asynchronous post-rollout review.">
         </div>
       </div>
     </section>
 
     <section id="videos">
-      <div class="wrap">
-        <div class="section-head">
-          <p class="section-label">Real-Robot Videos</p>
-          <h2>Deployment examples across ARX, Realman, and GALBOT G1.</h2>
-          <p class="lead">
-            The videos cover the policy-quality task categories reported in the paper,
-            plus additional transfer, precision-placement, multi-object, and contact-rich examples.
+      <div class="container">
+        <div class="section-title">
+          <h2>Real-Robot Task Coverage</h2>
+          <p>
+            The deployment clips cover the policy-quality categories in the paper and
+            additional transfer, precision-placement, multi-object, and contact-rich tasks.
           </p>
         </div>
-        <div class="figure-panel" style="margin-bottom: 24px;">
+
+        <div class="figure" style="margin-bottom: 34px;">
           <img src="assets/figures/robots_fig.png" alt="The three robot platforms used by RoboLineage: ARX, Realman, and GALBOT G1.">
         </div>
 
-        <div class="robot-grid">
-          <article class="robot-block">
-            <div class="robot-title">
-              <h3>ARX</h3>
-              <span>ACT-style action chunking</span>
-            </div>
-            <div class="video-grid">
-              <div class="video-card">
-                <video controls preload="metadata" playsinline src="assets/videos/ARX_red_cube_on_blue.mp4"></video>
-                <div class="video-meta"><h4>Red Cube on Blue</h4><p>Stacking-style placement.</p><span class="tag">Block</span></div>
-              </div>
-              <div class="video-card">
-                <video controls preload="metadata" playsinline src="assets/videos/ARX_lion_to_basket.mp4"></video>
-                <div class="video-meta"><h4>Lion to Basket</h4><p>Plush object placement.</p><span class="tag">Pick</span></div>
-              </div>
-              <div class="video-card">
-                <video controls preload="metadata" playsinline src="assets/videos/ARX_cup_in_cup.mp4"></video>
-                <div class="video-meta"><h4>Cup in Cup</h4><p>Container insertion.</p><span class="tag">Cup</span></div>
-              </div>
-              <div class="video-card">
-                <video controls preload="metadata" playsinline src="assets/videos/ARX_right_bottle.mp4"></video>
-                <div class="video-meta"><h4>Right Bottle</h4><p>Bottle reorientation.</p><span class="tag">Bottle</span></div>
-              </div>
-              <div class="video-card">
-                <video controls preload="metadata" playsinline src="assets/videos/ARX_pour_cherries.mp4"></video>
-                <div class="video-meta"><h4>Pour Cherries</h4><p>Container-to-container transfer.</p><span class="tag">Transfer</span></div>
-              </div>
-              <div class="video-card">
-                <video controls preload="metadata" playsinline src="assets/videos/ARX_scissors_compartment.mp4"></video>
-                <div class="video-meta"><h4>Scissors Compartment</h4><p>Precision placement.</p><span class="tag">Placement</span></div>
-              </div>
-            </div>
-          </article>
+        <div class="video-group">
+          <h3>ARX <span>ACT-style action chunking</span></h3>
+          <div class="video-grid">
+            <article class="video-card">
+              <video controls preload="metadata" playsinline src="assets/videos/ARX_red_cube_on_blue.mp4"></video>
+              <h4>Red Cube on Blue</h4>
+              <p>Block placement.</p>
+            </article>
+            <article class="video-card">
+              <video controls preload="metadata" playsinline src="assets/videos/ARX_lion_to_basket.mp4"></video>
+              <h4>Lion to Basket</h4>
+              <p>Pick-and-place.</p>
+            </article>
+            <article class="video-card">
+              <video controls preload="metadata" playsinline src="assets/videos/ARX_cup_in_cup.mp4"></video>
+              <h4>Cup in Cup</h4>
+              <p>Container insertion.</p>
+            </article>
+            <article class="video-card">
+              <video controls preload="metadata" playsinline src="assets/videos/ARX_right_bottle.mp4"></video>
+              <h4>Right Bottle</h4>
+              <p>Object reorientation.</p>
+            </article>
+            <article class="video-card">
+              <video controls preload="metadata" playsinline src="assets/videos/ARX_pour_cherries.mp4"></video>
+              <h4>Pour Cherries</h4>
+              <p>Container transfer.</p>
+            </article>
+            <article class="video-card">
+              <video controls preload="metadata" playsinline src="assets/videos/ARX_scissors_compartment.mp4"></video>
+              <h4>Scissors Compartment</h4>
+              <p>Precision placement.</p>
+            </article>
+          </div>
+        </div>
 
-          <article class="robot-block">
-            <div class="robot-title">
-              <h3>Realman</h3>
-              <span>Diffusion Policy workflow</span>
-            </div>
-            <div class="video-grid">
-              <div class="video-card">
-                <video controls preload="metadata" playsinline src="assets/videos/Realman_drawer_open_close.mp4"></video>
-                <div class="video-meta"><h4>Drawer Open and Close</h4><p>Contact-rich articulation.</p><span class="tag">Closed-loop case</span></div>
-              </div>
-              <div class="video-card">
-                <video controls preload="metadata" playsinline src="assets/videos/Realman_mango_watermelon_swap.mp4"></video>
-                <div class="video-meta"><h4>Mango Watermelon Swap</h4><p>Multi-object manipulation.</p><span class="tag">Swap</span></div>
-              </div>
-              <div class="video-card">
-                <video controls preload="metadata" playsinline src="assets/videos/Realman_tissue_to_table.mp4"></video>
-                <div class="video-meta"><h4>Tissue to Table</h4><p>Tissue extraction and placement.</p><span class="tag">Tissue</span></div>
-              </div>
-              <div class="video-card">
-                <video controls preload="metadata" playsinline src="assets/videos/Realman_spoon_stir.mp4"></video>
-                <div class="video-meta"><h4>Spoon Stir</h4><p>Tool use in a bowl.</p><span class="tag">Tool</span></div>
-              </div>
-            </div>
-          </article>
+        <div class="video-group">
+          <h3>Realman <span>Diffusion Policy workflow</span></h3>
+          <div class="video-grid">
+            <article class="video-card">
+              <video controls preload="metadata" playsinline src="assets/videos/Realman_drawer_open_close.mp4"></video>
+              <h4>Drawer Open and Close</h4>
+              <p>Contact-rich articulation.</p>
+            </article>
+            <article class="video-card">
+              <video controls preload="metadata" playsinline src="assets/videos/Realman_mango_watermelon_swap.mp4"></video>
+              <h4>Mango Watermelon Swap</h4>
+              <p>Multi-object manipulation.</p>
+            </article>
+            <article class="video-card">
+              <video controls preload="metadata" playsinline src="assets/videos/Realman_tissue_to_table.mp4"></video>
+              <h4>Tissue to Table</h4>
+              <p>Deformable object handling.</p>
+            </article>
+            <article class="video-card">
+              <video controls preload="metadata" playsinline src="assets/videos/Realman_spoon_stir.mp4"></video>
+              <h4>Spoon Stir</h4>
+              <p>Tool use.</p>
+            </article>
+          </div>
+        </div>
 
-          <article class="robot-block">
-            <div class="robot-title">
-              <h3>GALBOT G1</h3>
-              <span>VLA / LeRobot-style workflow</span>
-            </div>
-            <div class="video-grid">
-              <div class="video-card">
-                <video controls preload="metadata" playsinline src="assets/videos/GALBOT_sort_balls.mp4"></video>
-                <div class="video-meta"><h4>Sort Balls</h4><p>Tennis-ball and golf-ball sorting.</p><span class="tag">Sort</span></div>
-              </div>
-              <div class="video-card">
-                <video controls preload="metadata" playsinline src="assets/videos/GALBOT_wide_workspace_apple.mp4"></video>
-                <div class="video-meta"><h4>Wide Workspace Apple</h4><p>Apple transfer from a far source plate to a near target basket.</p><span class="tag">Mobile / wide workspace</span></div>
-              </div>
-            </div>
-          </article>
+        <div class="video-group">
+          <h3>GALBOT G1 <span>VLA / LeRobot-style workflow</span></h3>
+          <div class="video-grid">
+            <article class="video-card">
+              <video controls preload="metadata" playsinline src="assets/videos/GALBOT_sort_balls.mp4"></video>
+              <h4>Sort Balls</h4>
+              <p>Tennis-ball and golf-ball sorting.</p>
+            </article>
+            <article class="video-card">
+              <video controls preload="metadata" playsinline src="assets/videos/GALBOT_wide_workspace_apple.mp4"></video>
+              <h4>Wide Workspace Apple</h4>
+              <p>Far-to-near transfer.</p>
+            </article>
+          </div>
         </div>
       </div>
     </section>
 
-    <section id="results" class="alt">
-      <div class="wrap">
-        <div class="section-head">
-          <p class="section-label">Qualitative Results</p>
-          <h2>Visual evidence becomes governed lifecycle state.</h2>
-          <p class="lead">
-            VSA and post-rollout review convert sparse visual moments into evidence
-            packets, review outcomes, dataset decisions, and next-collection hints.
+    <section id="evidence" class="shaded">
+      <div class="container">
+        <div class="section-title">
+          <h2>Visual Evidence and Review Artifacts</h2>
+          <p>
+            Sparse online snapshots and post-rollout packets make failure evidence
+            inspectable before it becomes a dataset decision or recollection hint.
           </p>
         </div>
         <div class="qual-grid">
-          <div class="figure-panel"><img src="assets/figures/VSA_pick_up_the_red_block_and_place_it_on_the_blue_block.png" alt="VSA result for red block on blue block."></div>
-          <div class="figure-panel"><img src="assets/figures/VSA_stack_the_two_paper_cups_together.png" alt="VSA result for stacking two paper cups."></div>
-          <div class="figure-panel"><img src="assets/figures/VSA_swap_the_positions_of_the_watermelon_and_the_mango.png" alt="VSA result for swapping watermelon and mango."></div>
-          <div class="figure-panel"><img src="assets/figures/VSA_pull_the_toilet_paper_out_of_the_toilet_paper_box_and_place_it_on_the_table.png" alt="VSA result for tissue extraction."></div>
-          <div class="figure-panel"><img src="assets/figures/VSA_pour_the_cherries_from_one_bowl_into_another_bowl.png" alt="VSA result for cherry transfer."></div>
-          <div class="figure-panel"><img src="assets/figures/VSA_right_the_fallen_bottle.png" alt="VSA result for righting a bottle."></div>
+          <div class="figure"><img src="assets/figures/VSA_pick_up_the_red_block_and_place_it_on_the_blue_block.png" alt="VSA result for red block on blue block."></div>
+          <div class="figure"><img src="assets/figures/VSA_stack_the_two_paper_cups_together.png" alt="VSA result for stacking two paper cups."></div>
+          <div class="figure"><img src="assets/figures/VSA_swap_the_positions_of_the_watermelon_and_the_mango.png" alt="VSA result for swapping watermelon and mango."></div>
+          <div class="figure"><img src="assets/figures/VSA_pull_the_toilet_paper_out_of_the_toilet_paper_box_and_place_it_on_the_table.png" alt="VSA result for tissue extraction."></div>
+          <div class="figure"><img src="assets/figures/VSA_pour_the_cherries_from_one_bowl_into_another_bowl.png" alt="VSA result for cherry transfer."></div>
+          <div class="figure"><img src="assets/figures/VSA_right_the_fallen_bottle.png" alt="VSA result for righting a bottle."></div>
         </div>
       </div>
     </section>
 
-    <section id="case-study">
-      <div class="wrap">
-        <div class="section-head">
-          <p class="section-label">Closed-Loop Recollection</p>
-          <h2>Failure evidence becomes data-collection action.</h2>
-          <p class="lead">
-            RoboLineage links review evidence, dataset state, evaluation outcomes,
-            and previous policy iterations so that next-collection plans target the
-            failure mode currently blocking improvement.
+    <section>
+      <div class="container">
+        <div class="section-title">
+          <h2>Lineage-Guided Recollection</h2>
+          <p>
+            Failure analysis becomes data-collection action when review evidence is
+            connected to dataset state, evaluation outcomes, and prior policy iterations.
           </p>
         </div>
-        <div class="figure-panel">
+        <div class="figure">
           <img src="assets/figures/case_study_fig.png" alt="Closed-loop stack red-on-blue cube case study with failure evidence and recollection recommendations.">
         </div>
       </div>
     </section>
 
-    <section id="code" class="alt">
-      <div class="wrap">
-        <div class="section-head">
-          <p class="section-label">Code and Release Plan</p>
-          <h2>RoboLineage will be released in staged versions.</h2>
-          <p class="lead">
-            The public repository starts with the lifecycle interfaces and examples,
-            then expands toward a runnable preview and full research runtime.
+    <section id="release" class="shaded">
+      <div class="container">
+        <div class="section-title">
+          <h2>Code Release</h2>
+          <p>
+            We release RoboLineage in stages, starting from the lifecycle interfaces
+            and examples and moving toward a runnable runtime.
           </p>
         </div>
-        <div class="roadmap">
-          <div class="roadmap-card">
+        <div class="release">
+          <div class="release-card">
             <h3>v0.1</h3>
-            <p>Lifecycle artifact contracts, schemas, prompt contracts, example traces, and project documentation.</p>
+            <p>Artifact contracts, schemas, prompt contracts, example traces, and release notes.</p>
           </div>
-          <div class="roadmap-card">
+          <div class="release-card">
             <h3>v0.5</h3>
-            <p>Schema validators, scoring scripts, mini replay pipeline, mock model routes, and runtime preview examples.</p>
+            <p>Validators, scoring scripts, mini replay pipeline, mock model routes, and preview examples.</p>
           </div>
-          <div class="roadmap-card">
+          <div class="release-card">
             <h3>v1.0</h3>
-            <p>Cleaned backend runtime, frontend console, ROS2 integration, review pipeline, training adapters, and evaluation tools.</p>
+            <p>Cleaned runtime, frontend console, ROS2 integration, review pipeline, training adapters, and evaluation tools.</p>
           </div>
-        </div>
-        <div class="actions">
-          <a class="button" href="https://github.com/robolineage/robolineage">GitHub Repository</a>
         </div>
       </div>
     </section>
 
     <section id="paper">
-      <div class="wrap">
-        <div class="section-head">
-          <p class="section-label">Paper</p>
-          <h2>RoboLineage: Agent-Native Data Lifecycle Governance Across Robot Policy Iterations</h2>
-          <p class="lead">
-            The arXiv link will be added here after moderation. The citation below is a placeholder
-            for the public preprint entry.
+      <div class="narrow" id="citation">
+        <div class="section-title">
+          <h2>Paper and Citation</h2>
+          <p>
+            Read the preprint on <a href="https://arxiv.org/abs/2606.22142" target="_blank" rel="noopener">arXiv:2606.22142</a>.
           </p>
         </div>
-        <pre class="bibtex">@article{luo2026robolineage,
-  title={RoboLineage: Agent-Native Data Lifecycle Governance Across Robot Policy Iterations},
-  author={Luo, Qian and Guo, Wentao and Qin, Zhennan and Guo, Nanchun and Zhao, Yunhan and Ma, Yi and Yang, Yanchao},
-  year={2026}
+        <pre>@article{luo2026robolineage,
+  title   = {RoboLineage: Agent-Native Data Lifecycle Governance Across Robot Policy Iterations},
+  author  = {Luo, Qian and Guo, Wentao and Qin, Zhennan and Guo, Nanchun and Zhao, Yunhan and Ma, Yi and Yang, Yanchao},
+  journal = {arXiv preprint arXiv:2606.22142},
+  year    = {2026}
 }</pre>
       </div>
     </section>
   </main>
 
   <footer>
-    <div class="wrap">
-      RoboLineage is a research project on agent-native data lifecycle governance for robot policy iteration.
+    <div class="container">
+      RoboLineage is a research project on data lifecycle governance for robot policy iteration.
     </div>
   </footer>
 </body>
