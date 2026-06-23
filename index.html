@@ -93,10 +93,18 @@
       text-align: center;
     }
 
-    .brand-logo {
-      width: 84px;
-      height: 84px;
+    .hero-title {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 16px;
       margin: 0 auto 14px;
+    }
+
+    .brand-logo {
+      flex: 0 0 auto;
+      width: 72px;
+      height: 72px;
       border-radius: 22px;
       border: 1px solid rgba(220, 226, 231, 0.95);
       box-shadow: var(--shadow);
@@ -112,11 +120,12 @@
 
     h1 {
       max-width: 1120px;
-      margin: 0 auto 14px;
+      margin: 0;
       font-size: clamp(29px, 3.3vw, 39px);
       font-weight: 760;
       line-height: 1.1;
       letter-spacing: 0;
+      text-align: left;
     }
 
     h1 .break {
@@ -447,8 +456,20 @@
         padding-top: 26px;
       }
 
+      .hero-title {
+        flex-direction: column;
+        gap: 10px;
+      }
+
+      .brand-logo {
+        width: 66px;
+        height: 66px;
+        border-radius: 20px;
+      }
+
       h1 {
         font-size: 29px;
+        text-align: center;
       }
 
       .takeaways,
@@ -486,11 +507,13 @@
 
   <main id="main">
     <section class="hero section-wrap">
-      <img class="brand-logo" src="assets/brand/robolineage_logo_180.png" alt="RoboLineage logo">
-      <h1>
-        RoboLineage: Agent-Native Data Lifecycle
-        <span class="break">Governance Across Robot Policy Iterations</span>
-      </h1>
+      <div class="hero-title">
+        <img class="brand-logo" src="assets/brand/robolineage_logo_180.png" alt="RoboLineage logo">
+        <h1>
+          RoboLineage: Agent-Native Data Lifecycle
+          <span class="break">Governance Across Robot Policy Iterations</span>
+        </h1>
+      </div>
       <p class="subtitle">Making policy iteration legible across data, training, evaluation, and recollection.</p>
 
       <p class="authors">
