@@ -102,7 +102,7 @@
     h1 {
       max-width: 1120px;
       margin: 0 auto 14px;
-      font-size: clamp(30px, 3.55vw, 42px);
+      font-size: clamp(29px, 3.3vw, 39px);
       font-weight: 760;
       line-height: 1.1;
       letter-spacing: 0;
@@ -331,6 +331,14 @@
       margin: 16px auto 0;
     }
 
+    .figure-note {
+      width: min(850px, 100%);
+      margin: 9px auto 0;
+      color: var(--muted);
+      font-size: 14px;
+      text-align: center;
+    }
+
     .video-group {
       margin-top: 24px;
     }
@@ -367,6 +375,13 @@
 
     .qual-grid .figure {
       padding: 7px;
+    }
+
+    .qual-card h3 {
+      margin: 0 0 7px;
+      color: #26343d;
+      font-size: 15px;
+      font-weight: 760;
     }
 
     .case-figure {
@@ -461,8 +476,8 @@
   <main id="main">
     <section class="hero section-wrap">
       <h1>
-        RoboLineage: Agent-Native Data Lifecycle Governance
-        <span class="break">Across Robot Policy Iterations</span>
+        RoboLineage: Agent-Native Data Lifecycle
+        <span class="break">Governance Across Robot Policy Iterations</span>
       </h1>
       <p class="subtitle">Making policy iteration legible across data, training, evaluation, and recollection.</p>
 
@@ -502,6 +517,10 @@
       <figure class="figure robots-figure">
         <img src="assets/figures/robots_fig.png" alt="The three robot platforms used by RoboLineage: ARX, Realman, and GALBOT G1.">
       </figure>
+      <p class="figure-note">
+        We evaluate RoboLineage across ARX with ACT-style action chunking,
+        Realman with Diffusion Policy, and GALBOT G1 with a VLA/LeRobot-style workflow.
+      </p>
     </section>
 
     <section id="abstract" class="section-wrap text-section">
@@ -613,20 +632,41 @@
       <div class="section-heading">
         <h2>Visual Evidence and Review Artifacts</h2>
         <p>
-          Online snapshots and post-rollout packets turn visual moments into
-          reviewable lifecycle artifacts.
+          Raw capture remains the source of truth, online VSA writes sparse
+          semantic anchors during collection, and asynchronous review turns
+          evidence packets into dataset decisions and failure notes. The plates
+          below show how task phase, outcome, uncertainty, and failure evidence
+          are surfaced across representative tasks.
         </p>
       </div>
       <figure class="figure compact-figure">
         <img src="assets/figures/fig3.png" alt="Three-lane design for raw rollout capture, online VSA, and asynchronous post-rollout review.">
       </figure>
       <div class="qual-grid">
-        <figure class="figure"><img src="assets/figures/VSA_pick_up_the_red_block_and_place_it_on_the_blue_block.png" alt="VSA result for red block on blue block."></figure>
-        <figure class="figure"><img src="assets/figures/VSA_stack_the_two_paper_cups_together.png" alt="VSA result for stacking two paper cups."></figure>
-        <figure class="figure"><img src="assets/figures/VSA_swap_the_positions_of_the_watermelon_and_the_mango.png" alt="VSA result for swapping watermelon and mango."></figure>
-        <figure class="figure"><img src="assets/figures/VSA_pull_the_toilet_paper_out_of_the_toilet_paper_box_and_place_it_on_the_table.png" alt="VSA result for tissue extraction."></figure>
-        <figure class="figure"><img src="assets/figures/VSA_pour_the_cherries_from_one_bowl_into_another_bowl.png" alt="VSA result for cherry transfer."></figure>
-        <figure class="figure"><img src="assets/figures/VSA_right_the_fallen_bottle.png" alt="VSA result for righting a bottle."></figure>
+        <figure class="figure qual-card">
+          <h3>Pick up the red block and place it on the blue block</h3>
+          <img src="assets/figures/VSA_pick_up_the_red_block_and_place_it_on_the_blue_block.png" alt="VSA result for red block on blue block.">
+        </figure>
+        <figure class="figure qual-card">
+          <h3>Stack the two paper cups together</h3>
+          <img src="assets/figures/VSA_stack_the_two_paper_cups_together.png" alt="VSA result for stacking two paper cups.">
+        </figure>
+        <figure class="figure qual-card">
+          <h3>Swap the positions of the watermelon and the mango</h3>
+          <img src="assets/figures/VSA_swap_the_positions_of_the_watermelon_and_the_mango.png" alt="VSA result for swapping watermelon and mango.">
+        </figure>
+        <figure class="figure qual-card">
+          <h3>Pull the tissue out and place it on the table</h3>
+          <img src="assets/figures/VSA_pull_the_toilet_paper_out_of_the_toilet_paper_box_and_place_it_on_the_table.png" alt="VSA result for tissue extraction.">
+        </figure>
+        <figure class="figure qual-card">
+          <h3>Pour the cherries from one bowl into another bowl</h3>
+          <img src="assets/figures/VSA_pour_the_cherries_from_one_bowl_into_another_bowl.png" alt="VSA result for cherry transfer.">
+        </figure>
+        <figure class="figure qual-card">
+          <h3>Right the fallen bottle</h3>
+          <img src="assets/figures/VSA_right_the_fallen_bottle.png" alt="VSA result for righting a bottle.">
+        </figure>
       </div>
     </section>
 
@@ -636,6 +676,9 @@
         <p>
           Failure analysis becomes data-collection action when review evidence is
           connected to dataset state, evaluation outcomes, and prior policy iterations.
+          In the stacking case, repeated failures become targeted requests for
+          out-of-distribution grasp locations, centered pre-release placement,
+          and bounded-dwell release examples.
         </p>
       </div>
       <figure class="figure case-figure">
