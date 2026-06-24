@@ -404,8 +404,144 @@
       font-weight: 760;
     }
 
+    .effort-panel {
+      width: min(830px, 100%);
+      margin: 0 auto;
+      padding: 20px;
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      background: #fff;
+      box-shadow: var(--shadow);
+    }
+
+    .effort-bars {
+      display: grid;
+      gap: 14px;
+      margin: 8px 0 14px;
+    }
+
+    .effort-row {
+      display: grid;
+      grid-template-columns: 128px 1fr 74px;
+      gap: 12px;
+      align-items: center;
+      color: #26343d;
+      font-size: 14px;
+      font-weight: 720;
+    }
+
+    .effort-stack-track {
+      min-width: 0;
+      height: 34px;
+      border-radius: 7px;
+      background: #edf2f5;
+      overflow: hidden;
+    }
+
+    .effort-stack {
+      display: flex;
+      width: calc(var(--total) * 1%);
+      height: 100%;
+      border-radius: inherit;
+      overflow: hidden;
+    }
+
+    .effort-seg {
+      flex: var(--value) 0 0;
+      min-width: 2px;
+    }
+
+    .effort-seg.onboard {
+      background: #9ac8ea;
+    }
+
+    .effort-seg.collection {
+      background: #c4d0da;
+    }
+
+    .effort-seg.review {
+      background: #276c9f;
+    }
+
+    .effort-seg.integration {
+      background: #22bac3;
+    }
+
+    .effort-legend {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 8px 16px;
+      color: var(--muted);
+      font-size: 13px;
+    }
+
+    .effort-legend span {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+    }
+
+    .effort-legend i {
+      width: 11px;
+      height: 11px;
+      border-radius: 3px;
+      display: inline-block;
+    }
+
+    .vsa-gallery {
+      width: min(860px, 100%);
+      margin: 16px auto 0;
+    }
+
+    .vsa-tabs {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 8px;
+      margin-bottom: 12px;
+    }
+
+    .vsa-tab {
+      min-height: 34px;
+      padding: 0 12px;
+      border: 1px solid var(--line);
+      border-radius: 999px;
+      background: #fff;
+      color: #31424d;
+      font: inherit;
+      font-size: 13px;
+      font-weight: 760;
+      cursor: pointer;
+    }
+
+    .vsa-tab[aria-selected="true"] {
+      border-color: var(--blue-dark);
+      background: var(--blue-dark);
+      color: #fff;
+    }
+
+    .vsa-selected {
+      padding: 8px;
+    }
+
+    .vsa-selected h3 {
+      margin: 0 0 8px;
+      font-size: 16px;
+      text-align: center;
+    }
+
+    .full-link {
+      display: block;
+      margin-top: 8px;
+      color: var(--blue-dark);
+      font-size: 13px;
+      font-weight: 760;
+      text-align: center;
+    }
+
     .case-figure {
-      width: min(900px, 100%);
+      width: min(850px, 100%);
       margin: 0 auto;
     }
 
@@ -472,6 +608,20 @@
         text-align: center;
       }
 
+      .effort-panel {
+        padding: 15px;
+      }
+
+      .effort-row {
+        grid-template-columns: 1fr;
+        gap: 7px;
+      }
+
+      .effort-row > span:last-child {
+        color: var(--muted);
+        font-size: 13px;
+      }
+
       .takeaways,
       .video-grid {
         grid-template-columns: 1fr;
@@ -499,6 +649,7 @@
       <a href="#abstract">Abstract</a>
       <a href="#overview">Overview</a>
       <a href="#videos">Videos</a>
+      <a href="#effort">Effort</a>
       <a href="#evidence">Evidence</a>
       <a href="#citation">Citation</a>
       <a href="https://arxiv.org/abs/2606.22142" target="_blank" rel="noopener">arXiv</a>
@@ -667,6 +818,51 @@
       </div>
     </section>
 
+    <section id="effort" class="section-wrap">
+      <div class="section-heading">
+        <h2>Routine Lifecycle Effort</h2>
+        <p>
+          Physical rollout collection takes the same time in both workflows.
+          RoboLineage reduces the review, admission, and framework-preparation
+          work that typically happens between collection and training.
+        </p>
+      </div>
+      <div class="effort-panel" aria-label="Routine lifecycle effort per 30-rollout cycle">
+        <div class="effort-bars">
+          <div class="effort-row">
+            <span>Human expert</span>
+            <div class="effort-stack-track">
+              <div class="effort-stack" style="--total: 100;">
+                <i class="effort-seg onboard" style="--value: 10;" title="Onboarding: 10 min"></i>
+                <i class="effort-seg collection" style="--value: 40;" title="Collection: 40 min"></i>
+                <i class="effort-seg review" style="--value: 60;" title="Review: 60 min"></i>
+                <i class="effort-seg integration" style="--value: 20;" title="Integration: 20 min"></i>
+              </div>
+            </div>
+            <span>130 min</span>
+          </div>
+          <div class="effort-row">
+            <span>RoboLineage</span>
+            <div class="effort-stack-track">
+              <div class="effort-stack" style="--total: 41.5;">
+                <i class="effort-seg onboard" style="--value: 2;" title="Onboarding: 2 min"></i>
+                <i class="effort-seg collection" style="--value: 40;" title="Collection: 40 min"></i>
+                <i class="effort-seg review" style="--value: 10;" title="Review: 10 min"></i>
+                <i class="effort-seg integration" style="--value: 2;" title="Integration: 2 min"></i>
+              </div>
+            </div>
+            <span>54 min</span>
+          </div>
+        </div>
+        <div class="effort-legend" aria-label="Effort legend">
+          <span><i class="effort-seg onboard"></i>Onboarding</span>
+          <span><i class="effort-seg collection"></i>Collection</span>
+          <span><i class="effort-seg review"></i>Review</span>
+          <span><i class="effort-seg integration"></i>Integration</span>
+        </div>
+      </div>
+    </section>
+
     <section id="evidence" class="section-wrap shaded">
       <div class="section-heading">
         <h2>Visual Evidence and Review Artifacts</h2>
@@ -681,30 +877,19 @@
       <figure class="figure compact-figure">
         <img src="assets/figures/fig3.png" alt="Three-lane design for raw rollout capture, online VSA, and asynchronous post-rollout review.">
       </figure>
-      <div class="qual-grid">
-        <figure class="figure qual-card">
-          <h3>Pick up the red block and place it on the blue block</h3>
-          <img src="assets/figures/VSA_pick_up_the_red_block_and_place_it_on_the_blue_block.png" alt="VSA result for red block on blue block.">
-        </figure>
-        <figure class="figure qual-card">
-          <h3>Stack the two paper cups together</h3>
-          <img src="assets/figures/VSA_stack_the_two_paper_cups_together.png" alt="VSA result for stacking two paper cups.">
-        </figure>
-        <figure class="figure qual-card">
-          <h3>Swap the positions of the watermelon and the mango</h3>
-          <img src="assets/figures/VSA_swap_the_positions_of_the_watermelon_and_the_mango.png" alt="VSA result for swapping watermelon and mango.">
-        </figure>
-        <figure class="figure qual-card">
-          <h3>Pull the tissue out and place it on the table</h3>
-          <img src="assets/figures/VSA_pull_the_toilet_paper_out_of_the_toilet_paper_box_and_place_it_on_the_table.png" alt="VSA result for tissue extraction.">
-        </figure>
-        <figure class="figure qual-card">
-          <h3>Pour the cherries from one bowl into another bowl</h3>
-          <img src="assets/figures/VSA_pour_the_cherries_from_one_bowl_into_another_bowl.png" alt="VSA result for cherry transfer.">
-        </figure>
-        <figure class="figure qual-card">
-          <h3>Right the fallen bottle</h3>
-          <img src="assets/figures/VSA_right_the_fallen_bottle.png" alt="VSA result for righting a bottle.">
+      <div class="vsa-gallery">
+        <div class="vsa-tabs" role="tablist" aria-label="VSA qualitative examples">
+          <button class="vsa-tab" type="button" aria-selected="true" data-title="Pick up the red block and place it on the blue block" data-src="assets/figures/VSA_pick_up_the_red_block_and_place_it_on_the_blue_block.png" data-alt="VSA result for red block on blue block.">Stack Cube</button>
+          <button class="vsa-tab" type="button" aria-selected="false" data-title="Stack the two paper cups together" data-src="assets/figures/VSA_stack_the_two_paper_cups_together.png" data-alt="VSA result for stacking two paper cups.">Stack Cups</button>
+          <button class="vsa-tab" type="button" aria-selected="false" data-title="Swap the positions of the watermelon and the mango" data-src="assets/figures/VSA_swap_the_positions_of_the_watermelon_and_the_mango.png" data-alt="VSA result for swapping watermelon and mango.">Swap Fruit</button>
+          <button class="vsa-tab" type="button" aria-selected="false" data-title="Pull the tissue out and place it on the table" data-src="assets/figures/VSA_pull_the_toilet_paper_out_of_the_toilet_paper_box_and_place_it_on_the_table.png" data-alt="VSA result for tissue extraction.">Tissue</button>
+          <button class="vsa-tab" type="button" aria-selected="false" data-title="Pour the cherries from one bowl into another bowl" data-src="assets/figures/VSA_pour_the_cherries_from_one_bowl_into_another_bowl.png" data-alt="VSA result for cherry transfer.">Cherry Pour</button>
+          <button class="vsa-tab" type="button" aria-selected="false" data-title="Right the fallen bottle" data-src="assets/figures/VSA_right_the_fallen_bottle.png" data-alt="VSA result for righting a bottle.">Bottle Upright</button>
+        </div>
+        <figure class="figure vsa-selected">
+          <h3 id="vsa-title">Pick up the red block and place it on the blue block</h3>
+          <img id="vsa-image" src="assets/figures/VSA_pick_up_the_red_block_and_place_it_on_the_blue_block.png" alt="VSA result for red block on blue block.">
+          <a id="vsa-link" class="full-link" href="assets/figures/VSA_pick_up_the_red_block_and_place_it_on_the_blue_block.png" target="_blank" rel="noopener">Open full-size plate</a>
         </figure>
       </div>
     </section>
@@ -723,6 +908,7 @@
       <figure class="figure case-figure">
         <img src="assets/figures/case_study_fig.png" alt="Closed-loop stack red-on-blue cube case study with failure evidence and recollection recommendations.">
       </figure>
+      <a class="full-link" href="assets/figures/case_study_fig.png" target="_blank" rel="noopener">Open full-size case study</a>
     </section>
 
     <section id="citation" class="section-wrap narrow">
@@ -744,5 +930,25 @@
   <footer class="site-footer">
     RoboLineage is a research project on data lifecycle governance for robot policy iteration.
   </footer>
+  <script>
+    const vsaButtons = document.querySelectorAll(".vsa-tab");
+    const vsaTitle = document.getElementById("vsa-title");
+    const vsaImage = document.getElementById("vsa-image");
+    const vsaLink = document.getElementById("vsa-link");
+
+    vsaButtons.forEach((button) => {
+      button.addEventListener("click", () => {
+        vsaButtons.forEach((item) => item.setAttribute("aria-selected", "false"));
+        button.setAttribute("aria-selected", "true");
+        const title = button.dataset.title;
+        const src = button.dataset.src;
+        const alt = button.dataset.alt;
+        vsaTitle.textContent = title;
+        vsaImage.src = src;
+        vsaImage.alt = alt;
+        vsaLink.href = src;
+      });
+    });
+  </script>
 </body>
 </html>
