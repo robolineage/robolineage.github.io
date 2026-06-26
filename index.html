@@ -545,6 +545,15 @@
       margin: 0 auto;
     }
 
+    .console-figure {
+      width: min(900px, 100%);
+      margin: 0 auto;
+    }
+
+    .console-figure img {
+      max-height: 560px;
+    }
+
     pre {
       margin: 18px 0 0;
       padding: 16px;
@@ -861,6 +870,20 @@
           <span><i class="effort-seg integration"></i>Integration</span>
         </div>
       </div>
+    </section>
+
+    <section class="section-wrap">
+      <div class="section-heading">
+        <h2>System Interface</h2>
+        <p>
+          The frontend console exposes robot onboarding, source-stream checks,
+          lifecycle review, Data Health, and Master Agent summaries through the
+          same artifact interface used by the backend runtime.
+        </p>
+      </div>
+      <figure class="figure console-figure">
+        <img src="assets/figures/frontend_console_preview.png" alt="RoboLineage frontend console preview with robot onboarding, live preview, profiles, and source streams.">
+      </figure>
     </section>
 
     <section id="evidence" class="section-wrap shaded">
