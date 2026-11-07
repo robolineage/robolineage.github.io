@@ -409,6 +409,61 @@
     }
 
     .effort-panel {
+      margin-bottom: 16px;
+    }
+
+    .venue {
+      margin: 0 0 16px;
+      color: var(--blue-dark);
+      font-size: 18px;
+      font-weight: 750;
+    }
+
+    .results-wrap {
+      width: min(860px, 100%);
+      margin: 0 auto;
+    }
+
+    .results-table {
+      width: 100%;
+      border-collapse: collapse;
+      margin: 20px 0 12px;
+      font-size: 15px;
+      font-variant-numeric: tabular-nums;
+    }
+
+    .results-table th,
+    .results-table td {
+      padding: 12px 10px;
+      border-bottom: 1px solid var(--line);
+      text-align: right;
+      overflow-wrap: anywhere;
+    }
+
+    .results-table th:first-child,
+    .results-table td:first-child {
+      width: 48%;
+      text-align: left;
+    }
+
+    .results-table thead {
+      background: var(--soft);
+    }
+
+    .results-table .ours {
+      background: #eef7f3;
+      font-weight: 750;
+    }
+
+    .protocol-note {
+      max-width: 860px;
+      margin: 12px auto 0;
+      color: var(--muted);
+      font-size: 14px;
+      line-height: 1.6;
+    }
+
+    .effort-panel {
       width: min(830px, 100%);
       margin: 0 auto;
       padding: 20px;
@@ -661,6 +716,7 @@
     <nav aria-label="Primary navigation">
       <a href="#abstract">Abstract</a>
       <a href="#overview">Overview</a>
+      <a href="#results">Results</a>
       <a href="#videos">Videos</a>
       <a href="#effort">Effort</a>
       <a href="#evidence">Evidence</a>
@@ -671,6 +727,7 @@
 
   <main id="main">
     <section class="hero section-wrap">
+      <p class="venue">CoRL 2026</p>
       <div class="hero-title">
         <img class="brand-logo" src="assets/brand/robolineage_logo_180.png" alt="RoboLineage logo">
         <h1>
@@ -678,7 +735,7 @@
           <span class="break">Governance Across Robot Policy Iterations</span>
         </h1>
       </div>
-      <p class="subtitle">Making policy iteration legible across data, training, evaluation, and recollection.</p>
+      <p class="subtitle">Agents connect evidence, data, and decisions across robot learning iterations.</p>
 
       <p class="authors">
         <a href="https://qianqianlo.github.io/" target="_blank" rel="noopener">Qian Luo</a><sup>1,2</sup>,
@@ -690,7 +747,7 @@
         <a href="https://yanchaoyang.github.io/" target="_blank" rel="noopener">Yanchao Yang</a><sup>1,2</sup>
       </p>
       <p class="affiliations">
-        <span><sup>1</sup>Transcengram</span>
+        <span><sup>1</sup>TranscEngram</span>
         <span><sup>2</sup>The University of Hong Kong</span>
         <span><sup>3</sup>Beijing Institute of Technology</span>
       </p>
@@ -702,8 +759,8 @@
       </div>
 
       <div class="button-row" aria-label="Project links">
-        <a class="button primary" href="https://arxiv.org/abs/2606.22142" target="_blank" rel="noopener">arXiv</a>
-        <a class="button" href="https://arxiv.org/pdf/2606.22142" target="_blank" rel="noopener">PDF</a>
+        <a class="button primary" href="assets/paper/robolineage_corl2026.pdf" target="_blank" rel="noopener">Paper PDF</a>
+        <a class="button" href="https://arxiv.org/abs/2606.22142" target="_blank" rel="noopener">arXiv</a>
         <a class="button" href="https://github.com/robolineage/robolineage" target="_blank" rel="noopener">Code</a>
         <a class="button" href="#videos">Videos</a>
       </div>
@@ -717,31 +774,31 @@
         <img src="assets/figures/robots_fig.png" alt="The three robot platforms used by RoboLineage: ARX, Realman, and GALBOT G1.">
       </figure>
       <p class="figure-note">
-        Existing robot policy iteration leaves much of the work between training
-        runs to expert reconstruction: which evidence mattered, why data changed,
-        and what should be collected next. RoboLineage turns those transitions
-        into linked lifecycle artifacts that remain consistent as robots, data
-        formats, and policy learners change. Across diverse real-robot workflows,
-        this lifecycle reduces routine human effort while preserving policy quality.
+        RoboLineage organizes robot learning as a connected workflow. Agents work
+        under shared contracts that define their evidence, responsibilities, and
+        handoffs. Lineage links the resulting artifacts, so later stages and
+        collection rounds can use the history behind each dataset and policy.
       </p>
     </section>
 
     <section id="abstract" class="section-wrap text-section">
       <h2>Abstract</h2>
       <p>
-        Modern robot policies improve through repeated data collection, review,
-        retraining, evaluation, and release decisions, but the evidence connecting
-        these steps is often scattered across local tools, scripts, and expert memory.
-        RoboLineage makes this lifecycle explicit by representing rollouts, reviews,
-        dataset decisions, training runs, policy metadata, evaluations, deployment
-        recommendations, and next-collection plans as typed lineage artifacts.
+        We present RoboLineage, an agent-native data lifecycle governance system
+        for robot policy iteration. Modern robot policies improve through repeated
+        cycles of data collection and retraining. Teams still rely on local tools,
+        scripts, and expert memory to review the evidence and decide which data
+        to use or which policy to release. RoboLineage records how rollout evidence
+        leads to dataset changes and how those datasets produce policy versions.
+        Evaluation and release decisions remain linked to that history, including
+        the plan for the next collection round.
       </p>
       <p>
-        Agents interpret embodied rollout evidence, adapt accepted data to existing
-        training stacks, maintain data health, and summarize cross-iteration state
-        under explicit artifact boundaries. In real-robot manipulation workflows,
-        RoboLineage makes routine policy iteration faster and more auditable while
-        maintaining downstream policy performance.
+        Agents interpret embodied evidence and prepare accepted data for existing
+        training stacks. They also assess dataset readiness and carry context
+        across iterations through typed, validated artifacts. In real-robot
+        manipulation workflows, RoboLineage makes routine policy iteration faster
+        and more auditable while maintaining downstream policy performance.
       </p>
       <div class="takeaways">
         <article class="takeaway">
@@ -749,12 +806,12 @@
           <p>Rollouts, reviews, datasets, training records, evaluations, and recollection plans remain linked across iterations.</p>
         </article>
         <article class="takeaway">
-          <h3>Agent-native governance</h3>
-          <p>Agents prepare semantic evidence and summaries while validated artifacts carry lifecycle state.</p>
+          <h3>Shared work contracts</h3>
+          <p>Agents follow explicit responsibilities, evidence requirements, and validated handoffs across the learning workflow.</p>
         </article>
         <article class="takeaway">
-          <h3>Portable iteration</h3>
-          <p>The interface sits behind different robots and existing policy learners.</p>
+          <h3>Cross-round context</h3>
+          <p>Later collection plans use dataset coverage, policy ancestry, and earlier evaluation evidence.</p>
         </article>
       </div>
     </section>
@@ -831,13 +888,33 @@
       </div>
     </section>
 
+    <section id="results" class="section-wrap">
+      <div class="results-wrap">
+        <div class="section-heading">
+          <h2>Review Reliability</h2>
+          <p>Across 25 tasks and 500 rollouts, online visual anchors and packetized post-rollout review improve data-use decisions.</p>
+        </div>
+        <table class="results-table">
+          <caption>Review benchmark; all values are percentages (paper Table 1).</caption>
+          <thead><tr><th scope="col">Metric</th><th scope="col">Direct video-to-VLM</th><th scope="col">RoboLineage</th></tr></thead>
+          <tbody>
+            <tr><th scope="row">Outcome accuracy</th><td>78.4</td><td><strong>96.0</strong></td></tr>
+            <tr><th scope="row">Failure-phase accuracy</th><td>58.0</td><td><strong>88.0</strong></td></tr>
+            <tr><th scope="row">Data-use route accuracy</th><td>79.6</td><td><strong>96.4</strong></td></tr>
+            <tr><th scope="row">Bad-data leakage</th><td>16.0</td><td><strong>2.1</strong></td></tr>
+          </tbody>
+        </table>
+        <p class="protocol-note">Route accuracy is agreement with expert consensus across all 500 rollouts, before operator overrides. Leakage is the fraction of 194 expert-rejected rollouts admitted to the primary training manifest.</p>
+      </div>
+    </section>
+
     <section id="effort" class="section-wrap">
       <div class="section-heading">
         <h2>Routine Lifecycle Effort</h2>
         <p>
-          Physical rollout collection takes the same time in both workflows.
-          RoboLineage reduces the review, admission, and framework-preparation
-          work that typically happens between collection and training.
+          Active human time falls by 58.3% per 30-rollout cycle across 12 matched
+          sessions. Physical collection time remains similar; the savings come
+          from onboarding, review, and training preparation.
         </p>
       </div>
       <div class="effort-panel" aria-label="Routine lifecycle effort per 30-rollout cycle">
@@ -846,34 +923,36 @@
             <span>Human expert</span>
             <div class="effort-stack-track">
               <div class="effort-stack" style="--total: 100;">
-                <i class="effort-seg onboard" style="--value: 10;" title="Onboarding: 10 min"></i>
-                <i class="effort-seg collection" style="--value: 40;" title="Collection: 40 min"></i>
-                <i class="effort-seg review" style="--value: 60;" title="Review: 60 min"></i>
-                <i class="effort-seg integration" style="--value: 20;" title="Integration: 20 min"></i>
+                <i class="effort-seg onboard" style="--value: 10.1;" title="Onboarding: 10.1 min"></i>
+                <i class="effort-seg collection" style="--value: 40.5;" title="Collection: 40.5 min"></i>
+                <i class="effort-seg review" style="--value: 59.2;" title="Review: 59.2 min"></i>
+                <i class="effort-seg integration" style="--value: 20.4;" title="Training preparation: 20.4 min"></i>
               </div>
             </div>
-            <span>130 min</span>
+            <span>130.2 min</span>
           </div>
           <div class="effort-row">
             <span>RoboLineage</span>
             <div class="effort-stack-track">
-              <div class="effort-stack" style="--total: 41.5;">
-                <i class="effort-seg onboard" style="--value: 2;" title="Onboarding: 2 min"></i>
-                <i class="effort-seg collection" style="--value: 40;" title="Collection: 40 min"></i>
-                <i class="effort-seg review" style="--value: 10;" title="Review: 10 min"></i>
-                <i class="effort-seg integration" style="--value: 2;" title="Integration: 2 min"></i>
+              <div class="effort-stack" style="--total: 41.7051;">
+                <i class="effort-seg onboard" style="--value: 2.3;" title="Onboarding: 2.3 min"></i>
+                <i class="effort-seg collection" style="--value: 40.6;" title="Collection: 40.6 min"></i>
+                <i class="effort-seg review" style="--value: 9.4;" title="Review: 9.4 min"></i>
+                <i class="effort-seg integration" style="--value: 2.0;" title="Training preparation: 2.0 min"></i>
               </div>
             </div>
-            <span>54 min</span>
+            <span>54.3 min</span>
           </div>
         </div>
         <div class="effort-legend" aria-label="Effort legend">
           <span><i class="effort-seg onboard"></i>Onboarding</span>
           <span><i class="effort-seg collection"></i>Collection</span>
           <span><i class="effort-seg review"></i>Review</span>
-          <span><i class="effort-seg integration"></i>Integration</span>
+          <span><i class="effort-seg integration"></i>Training preparation</span>
         </div>
       </div>
+      <p class="protocol-note">Timing measures pre-training active human time, including blocking waits, after one-time robot and learner integration. GPU training and initial adapter development are excluded. Asynchronous review can overlap later collection (paper Figure 5 and Table 11).</p>
+      <p class="protocol-note">Policy quality remains close in the tested settings: mean success is 92.7% with RoboLineage-selected data and 93.1% with human-selected data across eight tasks. Each workflow selects 60 demonstrations from the same 100-candidate pool per task and evaluates 60 trials (paper Figure 4).</p>
     </section>
 
     <section class="section-wrap">
@@ -936,20 +1015,38 @@
         <img src="assets/figures/case_study_fig.png" alt="Closed-loop stack red-on-blue cube case study with failure evidence and recollection recommendations.">
       </figure>
       <a class="full-link" href="assets/figures/case_study_fig.png" target="_blank" rel="noopener">Open full-size case study</a>
+      <div class="results-wrap">
+        <table class="results-table">
+          <caption>Independent final-test success after three recollection rounds (%, paper Table 3).</caption>
+          <thead><tr><th scope="col">Collection planner</th><th scope="col">Cube stacking</th><th scope="col">Drawer opening</th></tr></thead>
+          <tbody>
+            <tr><th scope="row">Initial policy</th><td>25.0</td><td>26.7</td></tr>
+            <tr><th scope="row">Random collection</th><td>36.7</td><td>37.8</td></tr>
+            <tr><th scope="row">Failure-phase heuristic</th><td>66.7</td><td>62.2</td></tr>
+            <tr><th scope="row">No cross-round memory</th><td>70.0</td><td>66.7</td></tr>
+            <tr class="ours"><th scope="row">RoboLineage</th><td>83.3</td><td>78.9</td></tr>
+            <tr><th scope="row">Human expert</th><td>86.7</td><td>81.1</td></tr>
+          </tbody>
+        </table>
+        <p class="protocol-note">Three independent runs per method and task. Each round adds 30 accepted demonstrations and uses 30 diagnostic trials; the final test uses 60 separate trials per run. The no-memory planner sees the current review evidence but not earlier lifecycle context. Equal accepted-demo counts do not imply equal collection attempts.</p>
+      </div>
     </section>
 
     <section id="citation" class="section-wrap narrow">
       <div class="section-heading">
         <h2>Paper and Citation</h2>
         <p>
-          Read the preprint on <a href="https://arxiv.org/abs/2606.22142" target="_blank" rel="noopener">arXiv:2606.22142</a>.
+          Accepted to CoRL 2026. Read the <a href="assets/paper/robolineage_corl2026.pdf" target="_blank" rel="noopener">camera-ready paper</a> or visit <a href="https://arxiv.org/abs/2606.22142" target="_blank" rel="noopener">arXiv:2606.22142</a>.
         </p>
       </div>
-      <pre>@article{luo2026robolineage,
+      <pre>@inproceedings{luo2026robolineage,
   title   = {RoboLineage: Agent-Native Data Lifecycle Governance Across Robot Policy Iterations},
   author  = {Luo, Qian and Guo, Wentao and Qin, Zhennan and Guo, Nanchun and Zhao, Yunhan and Ma, Yi and Yang, Yanchao},
-  journal = {arXiv preprint arXiv:2606.22142},
-  year    = {2026}
+  booktitle = {Conference on Robot Learning (CoRL)},
+  year    = {2026},
+  eprint  = {2606.22142},
+  archivePrefix = {arXiv},
+  url     = {https://arxiv.org/abs/2606.22142}
 }</pre>
     </section>
   </main>
